@@ -20,6 +20,7 @@ A very simple and lightweight smooth scroll plugin.
 
 5. Hit "save setting" button.
 
+<br>
 
 # Screenshots
 
@@ -27,3 +28,16 @@ A very simple and lightweight smooth scroll plugin.
 
 ![demo_gif](https://i.ibb.co/jLMq8N0/ezgif-com-gif-maker.gif)
 
+<br>
+
+# Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+<br>
+
+# License
+[GPL](https://github.com/AdrianVillamayor/Smooth_Scroll_WP/blob/main/LICENSE)
+
+### Thanks for your help! 🎉

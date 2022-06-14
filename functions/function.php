@@ -88,7 +88,6 @@ function scripts_styles()
           'ss_smoothscroll_speed'  => (int)$options['ss_speed_duration'], // this is an integer
           'ss_smoothscroll_offset' => (int)$options['ss_offset'], // this is an integer
 
-
         ),
 
       );
