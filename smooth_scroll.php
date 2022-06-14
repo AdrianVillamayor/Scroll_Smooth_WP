@@ -1,7 +1,7 @@
 <?php
 
 /*
-  Plugin Name: Smooth Scroll
+  Plugin Name: Lightweight Smooth Scroll
   Description: A very simple and lightweight smooth scroll plugin.
   Version: 1.0
   Author: Adrii
