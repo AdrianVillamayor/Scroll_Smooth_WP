@@ -1,6 +1,6 @@
 <?php
 
-namespace ng_smoothscroller;
+namespace ii_scroll_smooth_wp;
 
 /*
 Plugin Name: Scroll_Smooth_WP
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 
 /* Assign global variables */
 
-$plugin_url = WP_PLUGIN_URL . '/smoothscroller';
+$plugin_url = WP_PLUGIN_URL . '/scroll_smooth_wp';
 $options = array();
 
 /**
@@ -30,7 +30,7 @@ $options = array();
 
 function load_textdomain()
 {
-    load_plugin_textdomain('smoothscroller', false, basename(dirname(__FILE__)) . '/languages');
+    load_plugin_textdomain('scroll_smooth_wp', false, basename(dirname(__FILE__)) . '/languages');
 }
 add_action('plugins_loaded', __NAMESPACE__ . '\\load_textdomain');
 
@@ -43,7 +43,7 @@ add_action('plugins_loaded', __NAMESPACE__ . '\\load_textdomain');
 //Script-tac-ulous -> All the Scripts and Styles Registered and Enqueued
 function scripts_styles()
 {
-    $options = get_option('smoothscroller_settings');
+    $options = get_option('scroll_smooth_controller_settings');
     //if( !isset( $options['ss_all_pages'] ) ) $options['ss_all_pages'] = 0;
     if (isset($options['ss_all_pages'])) {
 
@@ -138,58 +138,58 @@ function plugin_settings()
 {
     register_Setting(
         'ss_settings-group', //option name
-        'smoothscroller_settings', // option group setting name and option name
-        __NAMESPACE__ . '\\smoothscroller_validate_input' //sanitize the inputs
+        'scroll_smooth_controller_settings', // option group setting name and option name
+        __NAMESPACE__ . '\\scroll_smooth_controller_validate_input' //sanitize the inputs
     );
 
     add_settings_section(
-        'ss_smoothscroller_section', //declare the section id
-        'Smoothscroller Settings', //page title
-        __NAMESPACE__ . '\\ss_smoothscroller_section_callback', //callback function below
-        'smoothscroller' //page that it appears on
+        'ss_scroll_smooth_controller_section', //declare the section id
+        'scroll_smooth_controller Settings', //page title
+        __NAMESPACE__ . '\\ss_scroll_smooth_controller_section_callback', //callback function below
+        'scroll_smooth_controller' //page that it appears on
 
     );
     add_settings_field(
         'ss_all_pages', //unique id of field
         'Apply to all Posts/Pages', //title
         __NAMESPACE__ . '\\ss_all_pages_callback', //callback function below
-        'smoothscroller', //page that it appears on
-        'ss_smoothscroller_section' //settings section declared in add_settings_section
+        'scroll_smooth_controller', //page that it appears on
+        'ss_scroll_smooth_controller_section' //settings section declared in add_settings_section
     );
     add_settings_field(
         'ss_front_page', //unique id of field
         'Apply to Front/Home Page', //title
         __NAMESPACE__ . '\\ss_front_page_callback', //callback function below
-        'smoothscroller', //page that it appears on
-        'ss_smoothscroller_section' //settings section declared in add_settings_section
+        'scroll_smooth_controller', //page that it appears on
+        'ss_scroll_smooth_controller_section' //settings section declared in add_settings_section
     );
     add_settings_field(
         'ss_some_pages', //unique id of field
         'Apply to some Pages', //title
         __NAMESPACE__ . '\\ss_some_pages_callback', //callback function below
-        'smoothscroller', //page that it appears on
-        'ss_smoothscroller_section' //settings section declared in add_settings_section
+        'scroll_smooth_controller', //page that it appears on
+        'ss_scroll_smooth_controller_section' //settings section declared in add_settings_section
     );
     add_settings_field(
         'ss_some_posts', //unique id of field
         'Apply to some Posts', //title
         __NAMESPACE__ . '\\ss_some_posts_callback', //callback function below
-        'smoothscroller', //page that it appears on
-        'ss_smoothscroller_section' //settings section declared in add_settings_section
+        'scroll_smooth_controller', //page that it appears on
+        'ss_scroll_smooth_controller_section' //settings section declared in add_settings_section
     );
     add_settings_field(
         'ss_speed_duration', //unique id of field
         'Speed of Scroll', //title
-        __NAMESPACE__ . '\\ss_smoothscroller_speed_callback', //callback function below
-        'smoothscroller', //page that it appears on
-        'ss_smoothscroller_section' //settings section declared in add_settings_section
+        __NAMESPACE__ . '\\ss_scroll_smooth_controller_speed_callback', //callback function below
+        'scroll_smooth_controller', //page that it appears on
+        'ss_scroll_smooth_controller_section' //settings section declared in add_settings_section
     );
     add_settings_field(
         'ss_offset', //unique id of field
         'Offset of Scroll', //title
         __NAMESPACE__ . '\\ss_offset_callback', //callback function below
-        'smoothscroller', //page that it appears on
-        'ss_smoothscroller_section' //settings section declared in add_settings_section
+        'scroll_smooth_controller', //page that it appears on
+        'ss_scroll_smooth_controller_section' //settings section declared in add_settings_section
     );
 }
 add_action('admin_init', __NAMESPACE__ . '\\plugin_settings');
@@ -200,7 +200,7 @@ add_action('admin_init', __NAMESPACE__ . '\\plugin_settings');
  * @since 1.0.0
  */
 
-function smoothscroller_validate_input($input)
+function scroll_smooth_controller_validate_input($input)
 {
     // Create our array for storing the validated options
     $output = array();
@@ -218,10 +218,10 @@ function smoothscroller_validate_input($input)
     } // end foreach
 
     // Return the array processing any additional functions filtered by this action
-    return apply_filters('smoothscroller_validate_input', $output, $input);
+    return apply_filters('scroll_smooth_controller_validate_input', $output, $input);
 }
 
-function ss_smoothscroller_section_callback()
+function ss_scroll_smooth_controller_section_callback()
 {
 }
 
@@ -231,14 +231,14 @@ function ss_smoothscroller_section_callback()
  * @since 1.0.0
  */
 
-function ss_smoothscroller_speed_callback()
+function ss_scroll_smooth_controller_speed_callback()
 {
-    $options = get_option('smoothscroller_settings');
+    $options = get_option('scroll_smooth_controller_settings');
 
     if (!isset($options['ss_speed_duration'])) $options['ss_speed_duration'] = 200;
 
 ?>
-    <select name="smoothscroller_settings[ss_speed_duration]" id="ss_speed_duration">
+    <select name="scroll_smooth_controller_settings[ss_speed_duration]" id="ss_speed_duration">
         <option value="200" <?php selected($options['ss_speed_duration'], '200'); ?>>200</option>
         <option value="400" <?php selected($options['ss_speed_duration'], '400'); ?>>400</option>
         <option value="600" <?php selected($options['ss_speed_duration'], '600'); ?>>600</option>
@@ -246,7 +246,7 @@ function ss_smoothscroller_speed_callback()
         <option value="1000" <?php selected($options['ss_speed_duration'], '1000'); ?>>1000</option>
         <option value="2000" <?php selected($options['ss_speed_duration'], '2000'); ?>>2000</option>
     </select>
-    <label for="ss_speed_duration"><?php esc_attr_e('Speed of scroll (Lower numbers are faster)', 'smoothscroller'); ?></label>
+    <label for="ss_speed_duration"><?php esc_attr_e('Speed of scroll (Lower numbers are faster)', 'scroll_smooth_controller'); ?></label>
 <?php
 }
 
@@ -258,12 +258,12 @@ function ss_smoothscroller_speed_callback()
 
 function ss_all_pages_callback()
 {
-    $options = get_option('smoothscroller_settings');
+    $options = get_option('scroll_smooth_controller_settings');
 
     if (!isset($options['ss_all_pages'])) $options['ss_all_pages'] = 0;
 
-    echo '<input type="checkbox" id="ss_all_pages" name="smoothscroller_settings[ss_all_pages]" value="1"' . checked(1, $options['ss_all_pages'], false) . '/>';
-    echo '<label for="ss_all_pages">' . esc_attr_e('Check to enable Smoothscroller on all posts/pages', 'smoothscroller') . '</label>';
+    echo '<input type="checkbox" id="ss_all_pages" name="scroll_smooth_controller_settings[ss_all_pages]" value="1"' . checked(1, $options['ss_all_pages'], false) . '/>';
+    echo '<label for="ss_all_pages">' . esc_attr_e('Check to enable scroll_smooth_controller on all posts/pages', 'scroll_smooth_controller') . '</label>';
 }
 
 /**
@@ -274,12 +274,12 @@ function ss_all_pages_callback()
 
 function ss_front_page_callback()
 {
-    $options = get_option('smoothscroller_settings');
+    $options = get_option('scroll_smooth_controller_settings');
 
     if (!isset($options['ss_front_page'])) $options['ss_front_page'] = 0;
 
-    echo '<input type="checkbox" id="ss_front_page" name="smoothscroller_settings[ss_front_page]" value="1"' . checked(1, $options['ss_front_page'], false) . '/>';
-    echo '<label for="ss_front_page">' . esc_attr_e('Check to enable Smoothscroller on Home/Front page', 'smoothscroller') . '</label>';
+    echo '<input type="checkbox" id="ss_front_page" name="scroll_smooth_controller_settings[ss_front_page]" value="1"' . checked(1, $options['ss_front_page'], false) . '/>';
+    echo '<label for="ss_front_page">' . esc_attr_e('Check to enable scroll_smooth_controller on Home/Front page', 'scroll_smooth_controller') . '</label>';
 }
 
 /**
@@ -290,12 +290,12 @@ function ss_front_page_callback()
 
 function ss_offset_callback()
 {
-    $options = get_option('smoothscroller_settings');
+    $options = get_option('scroll_smooth_controller_settings');
 
     if (!isset($options['ss_offset'])) $options['ss_offset'] = '';
 
 
-    echo '<input type="number" id="ss_offset" name="smoothscroller_settings[ss_offset]" value="' . sanitize_text_field($options['ss_offset']) . '" placeholder="add offset">';
+    echo '<input type="number" id="ss_offset" name="scroll_smooth_controller_settings[ss_offset]" value="' . sanitize_text_field($options['ss_offset']) . '" placeholder="add offset">';
 }
 
 /**
@@ -306,13 +306,13 @@ function ss_offset_callback()
 
 function ss_some_pages_callback()
 {
-    $options = get_option('smoothscroller_settings');
+    $options = get_option('scroll_smooth_controller_settings');
 
     if (!isset($options['ss_some_pages'])) $options['ss_some_pages'] = '';
 
 
-    echo '<input type="text" id="ss_some_pages" name="smoothscroller_settings[ss_some_pages]" value="' . sanitize_text_field($options['ss_some_pages']) . '" placeholder="add page IDs comma separated">';
-    echo '<label for="ss_some_pages">' . esc_attr_e('Comma Separate the ID values', 'smoothscroller') . '</label>';
+    echo '<input type="text" id="ss_some_pages" name="scroll_smooth_controller_settings[ss_some_pages]" value="' . sanitize_text_field($options['ss_some_pages']) . '" placeholder="add page IDs comma separated">';
+    echo '<label for="ss_some_pages">' . esc_attr_e('Comma Separate the ID values', 'scroll_smooth_controller') . '</label>';
 }
 
 /**
@@ -323,13 +323,13 @@ function ss_some_pages_callback()
 
 function ss_some_posts_callback()
 {
-    $options = get_option('smoothscroller_settings');
+    $options = get_option('scroll_smooth_controller_settings');
 
     if (!isset($options['ss_some_posts'])) $options['ss_some_posts'] = '';
 
 
-    echo '<input type="text" id="ss_some_posts" name="smoothscroller_settings[ss_some_posts]" value="' . sanitize_text_field($options['ss_some_posts']) . '" placeholder="add post IDs comma separated">';
-    echo '<label for="ss_some_posts">' . esc_attr_e(' Comma Separate the ID values', 'smoothscroller') . '</label>';
+    echo '<input type="text" id="ss_some_posts" name="scroll_smooth_controller_settings[ss_some_posts]" value="' . sanitize_text_field($options['ss_some_posts']) . '" placeholder="add post IDs comma separated">';
+    echo '<label for="ss_some_posts">' . esc_attr_e(' Comma Separate the ID values', 'scroll_smooth_controller') . '</label>';
 }
 
 /**
@@ -340,17 +340,16 @@ function ss_some_posts_callback()
 
 function plugin_page()
 {
-
     /*
      * Use the add options_page function
      * add_options_page( $page_title, $menu_title, $capability, $menu-slug, $function )
      */
 
     add_options_page(
-        __('Smoothscroller Options Plugin', 'smoothscroller'), //$page_title
-        __('Smoothscroller', 'smoothscroller'), //$menu_title
+        __('Scroll Smooth Options', 'scroll_smooth_controller'), //$page_title
+        __('Scroll Smooth', 'scroll_smooth_controller'), //$menu_title
         'manage_options', //$capability
-        'smoothscroller', //$menu-slug
+        'scroll_smooth_controller', //$menu-slug
         __NAMESPACE__ . '\\plugin_options_page' //$function
     );
 }
