@@ -2,7 +2,7 @@
 Contributors: Adrii
 Tags: scroll, smooth, scroll_smooth, lightweight
 Stable tag: 1.0
-License: MIT or later
+License: GNU GENERAL PUBLIC LICENSE v2
 License URI: https://github.com/AdrianVillamayor/Smooth_Scroll_WP/blob/main/LICENSE
 
 A very simple and lightweight smooth scroll plugin.
